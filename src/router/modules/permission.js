@@ -1,0 +1,20 @@
+// 导出属于员工的路由规则
+import Layout from '@/layout'
+//  {  path: '', component: '' }
+// 每个子模块 其实 都是外层是layout  组件位于layout的二级路由里面
+export default {
+  path: '/permission', // 路径
+  name: 'permissions',
+  component: Layout, // 组件
+  // 配置二级路的路由表
+  children: [{
+    path: '', // 这里当二级路由的path什么都不写的时候 表示该路由为当前二级路由的默认路由
+    name: 'permissions',
+    component: () => import('@/views/permission'),
+    // 路由元信息  其实就是存储数据的对象 我们可以在这里放置一些信息
+    meta: {
+      title: '权限管理', // title有用处  表示当前模块的中文名称
+      icon: 'lock'
+    }
+  }]
+}
